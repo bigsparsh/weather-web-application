@@ -13,6 +13,7 @@ def get_data(place, days, option):
     match option:
         case 'Temperature':
             temperatures = [i['main']['temp'] for i in content['list'][:num_of_hrs]]
+            temperatures = [i / 10 for i in temperatures]
             return dates, temperatures
         case 'Sky':
             sky = [i['weather'][0]['main'] for i in content['list'][:num_of_hrs]]
